@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SJQRCode.h"
+#import "UIAlertView+SJAddtions.h"
 
 @interface ViewController ()
 
@@ -20,7 +21,6 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -30,15 +30,12 @@
     SJViewController *viewController = [[SJViewController alloc] init];
     /** successString 扫描成功返回来的数据 */
     viewController.successBlock = ^(NSString *successString) {
-        
         [self dismissViewControllerAnimated:YES completion:nil];
-        
-        NSLog(@"successBlock=%@",successString);
-        
-        [UIAlertView alertViewTitle:@"tip" message:successString delegate:self cancelButtonTitle:@"取消"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:successString]];
+        //[UIAlertView alertViewTitle:nil message:successString delegate:self cancelButtonTitle:nil];
     };
     
-    [self presentViewController:viewController animated:YES completion:nil];
+   [self presentViewController:viewController animated:YES completion:nil];
 }
 
 

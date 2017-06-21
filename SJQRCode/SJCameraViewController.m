@@ -1,17 +1,24 @@
 //
 //  SJCameraViewController.m
-//  SJQRCode
+// Copyright (c) 2011–2017 Alamofire Software Foundation
 //
-//  Created by Sunjie on 16/11/15.
-//  Copyright © 2016年 Sunjie. All rights reserved.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
-// 项目还未完成，将继续更新。
-//
-//
-// 初次封装代码，有不足的地方，请大神指教  邮箱：15220092519@163.com
-//
-//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 #import "SJCameraViewController.h"
 
@@ -114,6 +121,10 @@ NSString *const SJCameraErrorFailedToAddInput = @"SJThumbnailNotification";
         //设置扫描的类型
         NSArray *typesArr = @[AVMetadataObjectTypeQRCode,AVMetadataObjectTypeAztecCode,AVMetadataObjectTypePDF417Code,AVMetadataObjectTypeInterleaved2of5Code,AVMetadataObjectTypeUPCECode,AVMetadataObjectTypeCode39Code,AVMetadataObjectTypeCode39Mod43Code,AVMetadataObjectTypeEAN13Code,AVMetadataObjectTypeEAN8Code,AVMetadataObjectTypeCode93Code,AVMetadataObjectTypeCode128Code];
         self.metadataOutput.metadataObjectTypes = typesArr;
+        //设置扫描的区域
+       // self.rectrectOfInterest = CGRectMake(100, 100, 100, 100);
+        //self.metadataOutput.rectOfInterest = [self.captureVideoPreviewLayer metadataOutputRectOfInterestForRect:self.rectrectOfInterest];
+        NSLog(@"%@",NSStringFromCGRect(self.metadataOutput.rectOfInterest));
     } else {
         NSDictionary *usernfoDic = @{NSLocalizedDescriptionKey:@"Fail add metadata output"};
         *error = [NSError errorWithDomain:SJCameraErrorDomain code:SJCameraErrorCodeFailedToAddOutput userInfo:usernfoDic];
