@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SJQRCodeController.h
 // Copyright (c) 2011–2017 Alamofire Software Foundation
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,17 +22,10 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^SJViewControllerSuccessBlock)(NSString *);
+typedef void(^successMessageBlock)(NSString *messageString);
 
-@interface SJViewController : UIViewController
+@interface SJQRCodeController : UIViewController
 
-/** 扫描成功回调block */
-
-+ (void)show:(SJViewControllerSuccessBlock *)successBlock;
-
-@property (nonatomic, copy) SJViewControllerSuccessBlock successBlock;
-
-@property (nonatomic, assign) BOOL isCenter;
++ (instancetype)QRCodeSuccessMessageBlock:(successMessageBlock)block;
 
 @end
-

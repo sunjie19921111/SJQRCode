@@ -56,12 +56,9 @@ QRCode (qr code scanning) using iOS system framework, implementation of qr code 
 2: Put the SJQRCode in your project (把SJQRCode放进去你的工程)
 3: The implementation code （实现代码）
    { 
-      SJViewController *viewController = [[SJViewController alloc] init];
-    //successString Scan successfully returns to the data (功返回来的数据)
-    viewController.successBlock = ^(NSString *successString) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    };
-    
-    [self presentViewController:viewController animated:YES completion:nil];
+        SJQRCodeController *QRCodeController = [SJQRCodeController QRCodeSuccessMessageBlock:^(NSString *messageString) {
+            NSLog(@"%@",messageString);
+        }];
+
     }
 If you have questions, please leave a message.Or email, please everybody many help, thank you (如有问题，请留言。或者邮件，请大家多多指点，谢谢大家。)

@@ -23,13 +23,10 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-NSString *const SJCameraErrorDomain;
-NSString *const SJCameraErrorFailedToAddInput;
-
 @protocol SJCameraControllerDelegate <NSObject>
 
 /** 扫描二维码结果 */
-- (void)didDetectCodes:(NSString *)codesString;
+- (void)cameraControllerDidDetectCodes:(NSString *)codesString;
 
 @end
 

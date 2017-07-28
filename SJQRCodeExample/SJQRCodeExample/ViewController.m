@@ -27,15 +27,10 @@
 }
 
 - (IBAction)clickButton {
-    SJViewController *viewController = [[SJViewController alloc] init];
-    /** successString 扫描成功返回来的数据 */
-    viewController.successBlock = ^(NSString *successString) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:successString]];
-        //[UIAlertView alertViewTitle:nil message:successString delegate:self cancelButtonTitle:nil];
-    };
-    
-   [self presentViewController:viewController animated:YES completion:nil];
+    SJQRCodeController *qq =  [SJQRCodeController QRCodeSuccessMessageBlock:^(NSString *messageString) {
+       NSLog(@"%@",messageString);
+   }];
+    [self presentViewController:qq animated:YES completion:nil];
 }
 
 

@@ -1,5 +1,5 @@
 //
-//  SJQRCode.h
+//  SJScanningView.h
 // Copyright (c) 2011–2017 Alamofire Software Foundation
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,11 +20,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef SJQRCode_h
-#define SJQRCode_h
+#import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
-#import "SJViewController.h"
-#import "UIAlertView+SJAddtions.h"
+/** 按钮的类型 */
+typedef NS_ENUM(NSInteger, SJSCanningViewButton){
+    SJSCanningViewButtonExit = 1,
+    SJSCanningViewButtonAlbum,
+    SJSCanningViewButtonTorch,
+};
 
+@protocol SJScanningViewDelegate <NSObject>
 
-#endif /* SJQRCode_h */
+/** 按钮的点击事件的代理 */
+- (void)clickBarButtonItemSJButtonType:(SJSCanningViewButton)type;
+
+@end
+
+@interface SJScanningView : UIView
+
+@property (nonatomic, assign) id<SJScanningViewDelegate> scanningDelegate;
+
+/** 设置动画 */
+- (void)scanning;
+/** 移除动画 */
+- (void)removeScanningAnimations;
+
+@end

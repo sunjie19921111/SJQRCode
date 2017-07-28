@@ -1,5 +1,5 @@
 //
-//  SJScanningView.h
+//  UIAlertView+SJAddtions.m
 // Copyright (c) 2011–2017 Alamofire Software Foundation
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,35 +19,20 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+#import "UIAlertView+SJAddtions.h"
 
-#import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
+@implementation UIAlertView (SJAddtions)
 
-/** 按钮的类型 */
-typedef NS_ENUM(NSInteger, SJButtonType){
-    SJButtonTypeReturn = 1,
-    SJButtonTypeAlbum,
-    SJButtonTypeTorch,
-};
++ (UIAlertView *)alertViewTitle:(NSString *)title message:(NSString *)mess delegate:(id)delegate cancelButtonTitle:(NSString *)cancelBtn {
+    UIAlertView *alert = [self alertViewTitle:title message:mess delegate:delegate cancelButtonTitle:cancelBtn otherButtonTitles:nil];
+    return alert;
+    
+}
 
-static CGRect scanningRect;
-
-@protocol SJScanningViewDelegate <NSObject>
-
-/** 按钮的点击事件的代理 */
-- (void)clickBarButtonItemSJButtonType:(SJButtonType)type;
-
-@end
-
-@interface SJScanningView : UIView
-
-/** 是否授权 */
-@property (nonatomic, assign) BOOL isRestrict;
-@property (nonatomic, assign) id<SJScanningViewDelegate> scanningDelegate;
-
-/** 设置动画 */
-- (void)scanning;
-/** 移除动画 */
-- (void)removeScanningAnimations;
++ (UIAlertView *)alertViewTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelBtn otherButtonTitles:(NSString *)otherBtn {
+    UIAlertView  *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:delegate cancelButtonTitle:cancelBtn otherButtonTitles:otherBtn, nil];
+    [alert show];
+    return alert;
+}
 
 @end

@@ -15,11 +15,11 @@
 		147CC1001E7A748000256670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147CC0FE1E7A748000256670 /* LaunchScreen.storyboard */; };
 		147CC10B1E7A748000256670 /* SJQRCodeExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 147CC10A1E7A748000256670 /* SJQRCodeExampleTests.m */; };
 		147CC1161E7A748000256670 /* SJQRCodeExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 147CC1151E7A748000256670 /* SJQRCodeExampleUITests.m */; };
-		14D93BB11E83C48100FF84E5 /* SJCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D93BA81E83C48100FF84E5 /* SJCameraViewController.m */; };
-		14D93BB21E83C48100FF84E5 /* SJQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14D93BA91E83C48100FF84E5 /* SJQRCode.bundle */; };
-		14D93BB31E83C48100FF84E5 /* SJScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D93BAC1E83C48100FF84E5 /* SJScanningView.m */; };
-		14D93BB41E83C48100FF84E5 /* SJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D93BAE1E83C48100FF84E5 /* SJViewController.m */; };
-		14D93BB51E83C48100FF84E5 /* UIAlertView+SJAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D93BB01E83C48100FF84E5 /* UIAlertView+SJAddtions.m */; };
+		14AF4AFC1F2B284500CB9DC4 /* SJCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AF4AEE1F2B284500CB9DC4 /* SJCameraViewController.m */; };
+		14AF4AFD1F2B284500CB9DC4 /* SJScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AF4AF01F2B284500CB9DC4 /* SJScanningView.m */; };
+		14AF4AFF1F2B284500CB9DC4 /* UIAlertView+SJAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AF4AF41F2B284500CB9DC4 /* UIAlertView+SJAddtions.m */; };
+		14AF4B031F2B29F300CB9DC4 /* SJQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AF4B021F2B29F300CB9DC4 /* SJQRCodeController.m */; };
+		14AF4B051F2B2D3C00CB9DC4 /* SJQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14AF4B041F2B2D3C00CB9DC4 /* SJQRCode.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,16 +56,16 @@
 		147CC1111E7A748000256670 /* SJQRCodeExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SJQRCodeExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		147CC1151E7A748000256670 /* SJQRCodeExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJQRCodeExampleUITests.m; sourceTree = "<group>"; };
 		147CC1171E7A748000256670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14D93BA71E83C48100FF84E5 /* SJCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJCameraViewController.h; sourceTree = "<group>"; };
-		14D93BA81E83C48100FF84E5 /* SJCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJCameraViewController.m; sourceTree = "<group>"; };
-		14D93BA91E83C48100FF84E5 /* SJQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SJQRCode.bundle; sourceTree = "<group>"; };
-		14D93BAA1E83C48100FF84E5 /* SJQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJQRCode.h; sourceTree = "<group>"; };
-		14D93BAB1E83C48100FF84E5 /* SJScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJScanningView.h; sourceTree = "<group>"; };
-		14D93BAC1E83C48100FF84E5 /* SJScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJScanningView.m; sourceTree = "<group>"; };
-		14D93BAD1E83C48100FF84E5 /* SJViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJViewController.h; sourceTree = "<group>"; };
-		14D93BAE1E83C48100FF84E5 /* SJViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJViewController.m; sourceTree = "<group>"; };
-		14D93BAF1E83C48100FF84E5 /* UIAlertView+SJAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+SJAddtions.h"; sourceTree = "<group>"; };
-		14D93BB01E83C48100FF84E5 /* UIAlertView+SJAddtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+SJAddtions.m"; sourceTree = "<group>"; };
+		14AF4AED1F2B284500CB9DC4 /* SJCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJCameraViewController.h; sourceTree = "<group>"; };
+		14AF4AEE1F2B284500CB9DC4 /* SJCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJCameraViewController.m; sourceTree = "<group>"; };
+		14AF4AEF1F2B284500CB9DC4 /* SJScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJScanningView.h; sourceTree = "<group>"; };
+		14AF4AF01F2B284500CB9DC4 /* SJScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJScanningView.m; sourceTree = "<group>"; };
+		14AF4AF31F2B284500CB9DC4 /* UIAlertView+SJAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+SJAddtions.h"; sourceTree = "<group>"; };
+		14AF4AF41F2B284500CB9DC4 /* UIAlertView+SJAddtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+SJAddtions.m"; sourceTree = "<group>"; };
+		14AF4B001F2B286400CB9DC4 /* SJQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJQRCode.h; sourceTree = "<group>"; };
+		14AF4B011F2B29F300CB9DC4 /* SJQRCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJQRCodeController.h; sourceTree = "<group>"; };
+		14AF4B021F2B29F300CB9DC4 /* SJQRCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJQRCodeController.m; sourceTree = "<group>"; };
+		14AF4B041F2B2D3C00CB9DC4 /* SJQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SJQRCode.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,7 @@
 		147CC0EF1E7A748000256670 /* SJQRCodeExample */ = {
 			isa = PBXGroup;
 			children = (
-				14D93BA61E83C48100FF84E5 /* SJQRCode */,
+				14AF4AE41F2B284500CB9DC4 /* SJQRCode */,
 				147CC0F31E7A748000256670 /* AppDelegate.h */,
 				147CC0F41E7A748000256670 /* AppDelegate.m */,
 				147CC0F61E7A748000256670 /* ViewController.h */,
@@ -156,22 +156,21 @@
 			path = SJQRCodeExampleUITests;
 			sourceTree = "<group>";
 		};
-		14D93BA61E83C48100FF84E5 /* SJQRCode */ = {
+		14AF4AE41F2B284500CB9DC4 /* SJQRCode */ = {
 			isa = PBXGroup;
 			children = (
-				14D93BA71E83C48100FF84E5 /* SJCameraViewController.h */,
-				14D93BA81E83C48100FF84E5 /* SJCameraViewController.m */,
-				14D93BA91E83C48100FF84E5 /* SJQRCode.bundle */,
-				14D93BAA1E83C48100FF84E5 /* SJQRCode.h */,
-				14D93BAB1E83C48100FF84E5 /* SJScanningView.h */,
-				14D93BAC1E83C48100FF84E5 /* SJScanningView.m */,
-				14D93BAD1E83C48100FF84E5 /* SJViewController.h */,
-				14D93BAE1E83C48100FF84E5 /* SJViewController.m */,
-				14D93BAF1E83C48100FF84E5 /* UIAlertView+SJAddtions.h */,
-				14D93BB01E83C48100FF84E5 /* UIAlertView+SJAddtions.m */,
+				14AF4B041F2B2D3C00CB9DC4 /* SJQRCode.bundle */,
+				14AF4AEF1F2B284500CB9DC4 /* SJScanningView.h */,
+				14AF4AF01F2B284500CB9DC4 /* SJScanningView.m */,
+				14AF4B011F2B29F300CB9DC4 /* SJQRCodeController.h */,
+				14AF4B021F2B29F300CB9DC4 /* SJQRCodeController.m */,
+				14AF4AED1F2B284500CB9DC4 /* SJCameraViewController.h */,
+				14AF4AEE1F2B284500CB9DC4 /* SJCameraViewController.m */,
+				14AF4AF31F2B284500CB9DC4 /* UIAlertView+SJAddtions.h */,
+				14AF4AF41F2B284500CB9DC4 /* UIAlertView+SJAddtions.m */,
+				14AF4B001F2B286400CB9DC4 /* SJQRCode.h */,
 			);
-			name = SJQRCode;
-			path = ../../SJQRCode;
+			path = SJQRCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,7 +240,7 @@
 				TargetAttributes = {
 					147CC0EC1E7A748000256670 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5SHRYYB7CA;
+						DevelopmentTeam = 56P78W32BT;
 						ProvisioningStyle = Automatic;
 					};
 					147CC1051E7A748000256670 = {
@@ -285,7 +284,7 @@
 			files = (
 				147CC1001E7A748000256670 /* LaunchScreen.storyboard in Resources */,
 				147CC0FD1E7A748000256670 /* Assets.xcassets in Resources */,
-				14D93BB21E83C48100FF84E5 /* SJQRCode.bundle in Resources */,
+				14AF4B051F2B2D3C00CB9DC4 /* SJQRCode.bundle in Resources */,
 				147CC0FB1E7A748000256670 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,12 +310,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14D93BB11E83C48100FF84E5 /* SJCameraViewController.m in Sources */,
-				14D93BB41E83C48100FF84E5 /* SJViewController.m in Sources */,
+				14AF4AFC1F2B284500CB9DC4 /* SJCameraViewController.m in Sources */,
 				147CC0F81E7A748000256670 /* ViewController.m in Sources */,
-				14D93BB51E83C48100FF84E5 /* UIAlertView+SJAddtions.m in Sources */,
+				14AF4AFF1F2B284500CB9DC4 /* UIAlertView+SJAddtions.m in Sources */,
 				147CC0F51E7A748000256670 /* AppDelegate.m in Sources */,
-				14D93BB31E83C48100FF84E5 /* SJScanningView.m in Sources */,
+				14AF4AFD1F2B284500CB9DC4 /* SJScanningView.m in Sources */,
+				14AF4B031F2B29F300CB9DC4 /* SJQRCodeController.m in Sources */,
 				147CC0F21E7A748000256670 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,10 +465,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5SHRYYB7CA;
+				DEVELOPMENT_TEAM = 56P78W32BT;
 				INFOPLIST_FILE = SJQRCodeExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_BUNDLE_IDENTIFIER = com..SJQRCodeExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -479,10 +479,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5SHRYYB7CA;
+				DEVELOPMENT_TEAM = 56P78W32BT;
 				INFOPLIST_FILE = SJQRCodeExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_BUNDLE_IDENTIFIER = com..SJQRCodeExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -121,8 +121,7 @@ NSString *const SJCameraErrorFailedToAddInput = @"SJThumbnailNotification";
         //设置扫描的类型
         NSArray *typesArr = @[AVMetadataObjectTypeQRCode,AVMetadataObjectTypeAztecCode,AVMetadataObjectTypePDF417Code,AVMetadataObjectTypeInterleaved2of5Code,AVMetadataObjectTypeUPCECode,AVMetadataObjectTypeCode39Code,AVMetadataObjectTypeCode39Mod43Code,AVMetadataObjectTypeEAN13Code,AVMetadataObjectTypeEAN8Code,AVMetadataObjectTypeCode93Code,AVMetadataObjectTypeCode128Code];
         self.metadataOutput.metadataObjectTypes = typesArr;
-        //设置扫描的区域
-       // self.rectrectOfInterest = CGRectMake(100, 100, 100, 100);
+        // self.rectrectOfInterest = CGRectMake(100, 100, 100, 100);
         //self.metadataOutput.rectOfInterest = [self.captureVideoPreviewLayer metadataOutputRectOfInterestForRect:self.rectrectOfInterest];
         NSLog(@"%@",NSStringFromCGRect(self.metadataOutput.rectOfInterest));
     } else {
@@ -207,7 +206,6 @@ NSString *const SJCameraErrorFailedToAddInput = @"SJThumbnailNotification";
 didOutputMetadataObjects:(NSArray *)metadataObjects
        fromConnection:(AVCaptureConnection *)connection {
     [self stopSession];
-    NSLog(@"metadataObjects:%@",metadataObjects);
     BOOL isAvailable = YES;
     if (metadataObjects.count > 0 && isAvailable == YES) {
         isAvailable = NO;
@@ -215,8 +213,9 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         AudioServicesPlaySystemSound(1360);
         AVMetadataMachineReadableCodeObject *MetadataObject = [metadataObjects objectAtIndex:0];
         metadataString = MetadataObject.stringValue;
-        [self.delegate didDetectCodes:metadataString];
+        [self.delegate cameraControllerDidDetectCodes:metadataString];
     }
 }
+
 
 @end

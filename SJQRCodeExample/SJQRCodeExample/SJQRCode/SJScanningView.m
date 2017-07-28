@@ -30,15 +30,12 @@ static const CGFloat kBtnWidth = 44;
 static const CGFloat kBtnTopMargin = 20;
 static const CGFloat kBtnMargin = 10;
 
+static CGRect scanningRect;
+
 @interface SJScanningView ()
 
-/** 返回按钮 */
-@property (nonatomic, strong) UIButton *returenButton;
-/** 相册按钮 */
-@property (nonatomic, strong) UIButton *albumButton;
-/** 手电筒按钮 */
-@property (nonatomic, strong) UIButton *torchButton;
-
+/** 是否授权 */
+@property (nonatomic, assign) BOOL isRestrict;
 @property (nonatomic, assign) CGRect cleanRect;
 @property (nonatomic, assign) CGRect scanningRect;
 @property (nonatomic, strong) UILabel *QRCodeTipLabel;
@@ -91,6 +88,7 @@ static const CGFloat kBtnMargin = 10;
 - (void)setupView {
     self.isRestrict = YES;
     self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.500];
+    
     [self addSubview:self.scanningImageView];
     [self addSubview:self.QRCodeTipLabel];
     [self QRCodeQRCodeTipLabelString];
@@ -125,14 +123,13 @@ static const CGFloat kBtnMargin = 10;
     self.scanningImageView.frame = scanningRect;
     CGRect animatationRect = scanningRect;
     animatationRect.origin.y += CGRectGetWidth(self.bounds) - CGRectGetMinX(animatationRect) * 2 - CGRectGetHeight(animatationRect);
-    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelay:0];
     [UIView setAnimationDuration:1.2];
     [UIView setAnimationCurve:UIViewAnimationCurveLinear];
     [UIView setAnimationRepeatCount:FLT_MAX];
     [UIView setAnimationRepeatAutoreverses:NO];
-    
+
     self.scanningImageView.frame = animatationRect;
     [UIView commitAnimations];
 }
@@ -146,28 +143,28 @@ static const CGFloat kBtnMargin = 10;
 #pragma mark - Setup BarBottomItem
 
 - (void)drawBarBottomItems {
-    self.returenButton = [self createButtonImageString:@"SJQRCode.bundle/qrcode_scan_back_nor" heightImageString:@"SJQRCode.bundle/qrcode_scan_back_nor" buttonType:SJButtonTypeReturn];
-    self.torchButton = [self createButtonImageString:@"SJQRCode.bundle/qrcode_scan_torch_nor" heightImageString:@"SJQRCode.bundle/qrcode_scan_torch_nor" buttonType:SJButtonTypeTorch];
-    self.albumButton = [self createButtonImageString:@"SJQRCode.bundle/qrcode_scan_pic_nor" heightImageString:@"SJQRCode.bundle/qrcode_scan_pic_nor" buttonType:SJButtonTypeAlbum];
+
+    UIButton *exitBtn = [self createButtonNormalImage:[UIImage imageNamed:@"SJQRCode.bundle/qrcode_scan_back_nor"] selectImage:[UIImage imageNamed:@"SJQRCode.bundle/qrcode_scan_back_nor"] scanningViewButton:SJSCanningViewButtonExit];
+    UIButton *torchBtn = [self createButtonNormalImage:[UIImage imageNamed:@"SJQRCode.bundle/qrcode_scan_torch_nor"] selectImage:[UIImage imageNamed:@"SJQRCode.bundle/qrcode_scan_torch_nor"] scanningViewButton:SJSCanningViewButtonTorch];
+    UIButton *albumBtn = [self createButtonNormalImage:[UIImage imageNamed:@"SJQRCode.bundle/qrcode_scan_pic_nor"] selectImage:[UIImage imageNamed:@"SJQRCode.bundle/qrcode_scan_pic_nor"] scanningViewButton:SJSCanningViewButtonAlbum];
     
-    [self addSubview:self.returenButton];
-    [self addSubview:self.torchButton];
-    [self addSubview:self.albumButton];
+    [self addSubview:exitBtn];
+    [self addSubview:torchBtn];
+    [self addSubview:albumBtn];
 }
 
-- (UIButton *)createButtonImageString:(NSString *)imageString heightImageString:(NSString *)hImageString buttonType:(SJButtonType)btnType{
+- (UIButton *)createButtonNormalImage:(UIImage *)normalImage selectImage:(UIImage *)selectImage scanningViewButton:(SJSCanningViewButton)btnTag {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.tag = btnType;
-    [button setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:imageString] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:hImageString] forState:UIControlStateSelected];
+    button.tag = btnTag;
+    [button setImage:normalImage forState:UIControlStateNormal];
+    [button setImage:selectImage forState:UIControlStateSelected];
     [button addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    if (btnType == SJButtonTypeReturn) {
+    if (btnTag == SJSCanningViewButtonExit) {
         button.frame = CGRectMake(kBtnMargin, kBtnTopMargin, kBtnWidth, kBtnWidth);
-    }else if (btnType == SJButtonTypeTorch) {
+    }else if (btnTag == SJSCanningViewButtonTorch) {
         button.frame = CGRectMake(CGRectGetWidth(self.bounds) - kBtnMargin - kBtnWidth, kBtnTopMargin, kBtnWidth, kBtnWidth);
-    }else if (btnType == SJButtonTypeAlbum) {
+    }else if (btnTag == SJSCanningViewButtonAlbum) {
         button.frame = CGRectMake(CGRectGetWidth(self.bounds) - (kBtnMargin + kBtnWidth) * 2, kBtnTopMargin, kBtnWidth, kBtnWidth);
     }
     
@@ -181,6 +178,8 @@ static const CGFloat kBtnMargin = 10;
 }
 
 - (void)drawRect:(CGRect)rect {
+  
+    NSLog(@"%@",NSStringFromCGRect(rect));
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(contextRef, self.backgroundColor.CGColor);
     CGContextFillRect(contextRef, rect);
