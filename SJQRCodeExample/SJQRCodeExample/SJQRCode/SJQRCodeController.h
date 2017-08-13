@@ -22,10 +22,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^successMessageBlock)(NSString *messageString);
-
 @interface SJQRCodeController : UIViewController
 
-+ (instancetype)QRCodeSuccessMessageBlock:(successMessageBlock)block;
++ (instancetype)QRCodeSuccessMessageBlock:(void(^)(NSString *messageString))block;
 
 @end

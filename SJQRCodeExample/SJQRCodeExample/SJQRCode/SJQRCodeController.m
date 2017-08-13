@@ -25,6 +25,8 @@
 #import "SJCameraViewController.h"
 #import "UIAlertView+SJAddtions.h"
 
+typedef void(^successMessageBlock)(NSString *messageString);
+
 #define kIsAuthorizedString @"请在iOS - 设置 － 隐私 － 相机 中打开相机权限"
 #define kiOS8 [[UIDevice currentDevice].systemVersion integerValue]
 
@@ -75,7 +77,7 @@
 
 #pragma mark - Life Cycle
 
-+ (instancetype)QRCodeSuccessMessageBlock:(successMessageBlock)block {
++ (instancetype)QRCodeSuccessMessageBlock:(void (^)(NSString *))block {
     SJQRCodeController *QRCodeController = [[SJQRCodeController alloc] init];
     QRCodeController.block = block;
     return QRCodeController;

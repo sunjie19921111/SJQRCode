@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, SJSCanningViewButton){
 @protocol SJScanningViewDelegate <NSObject>
 
 /** 按钮的点击事件的代理 */
-- (void)clickBarButtonItemSJButtonType:(SJSCanningViewButton)type;
+- (void)scanningViewClickBarButtonItem:(SJSCanningViewButton)type;
 
 @end
 

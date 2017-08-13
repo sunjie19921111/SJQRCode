@@ -174,12 +174,11 @@ static CGRect scanningRect;
 #pragma mark - Button Action
 
 - (void)clickButton:(UIButton *)btn {
-    [self.scanningDelegate clickBarButtonItemSJButtonType:btn.tag];
+    [self.scanningDelegate scanningViewClickBarButtonItem:btn.tag];
 }
 
 - (void)drawRect:(CGRect)rect {
   
-    NSLog(@"%@",NSStringFromCGRect(rect));
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(contextRef, self.backgroundColor.CGColor);
     CGContextFillRect(contextRef, rect);
