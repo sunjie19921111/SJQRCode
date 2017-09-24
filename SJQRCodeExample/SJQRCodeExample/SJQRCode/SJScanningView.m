@@ -174,7 +174,9 @@ static CGRect scanningRect;
 #pragma mark - Button Action
 
 - (void)clickButton:(UIButton *)btn {
-    [self.scanningDelegate scanningViewClickBarButtonItem:btn.tag];
+    if (self.scanningDelegate && [self.scanningDelegate respondsToSelector:@selector(scanningViewClickBarButtonItem:)]) {
+         [self.scanningDelegate scanningViewClickBarButtonItem:btn.tag];
+    }
 }
 
 - (void)drawRect:(CGRect)rect {

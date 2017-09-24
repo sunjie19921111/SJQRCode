@@ -45,6 +45,7 @@
 - (IBAction)clickButton {
     SJQRCodeController *qq =  [SJQRCodeController QRCodeSuccessMessageBlock:^(NSString *messageString) {
        NSLog(@"%@",messageString);
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:messageString]];
    }];
     [self presentViewController:qq animated:YES completion:nil];
 }

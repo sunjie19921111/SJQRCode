@@ -25,6 +25,8 @@
 #import "SJCameraViewController.h"
 #import "UIAlertView+SJAddtions.h"
 
+#define iOS8Later ([UIDevice currentDevice].systemVersion.floatValue >= 8.0f)
+
 typedef void(^successMessageBlock)(NSString *messageString);
 
 #define kIsAuthorizedString @"请在iOS - 设置 － 隐私 － 相机 中打开相机权限"
@@ -94,9 +96,6 @@ typedef void(^successMessageBlock)(NSString *messageString);
     [super viewWillAppear:animated];
     if ([self isCameraIsAuthorized]) {
         [self setupView];
-    } else {
-        UIAlertView *alert  =  [UIAlertView alertViewTitle:@"相机权限提示" message:kIsAuthorizedString  delegate:self cancelButtonTitle:@"知道了"];
-        alert.tag = 886;
     }
 }
 
@@ -121,25 +120,40 @@ typedef void(^successMessageBlock)(NSString *messageString);
 #pragma mark - The Camera is Authorized
 
 - (BOOL)isCameraIsAuthorized {
-    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    /*AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if(authStatus == AVAuthorizationStatusDenied){
         [self dismissViewControllerAnimated:YES completion:nil];
         return NO;
     } else if (authStatus == AVAuthorizationStatusAuthorized) {
         return YES;
+    }*/
+    
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if ((authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied)) {
+        // 无相机权限 做一个友好的提示
+        if (iOS8Later) {
+            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
+            [alert show];
+        } else {
+            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+    }else if (authStatus == AVAuthorizationStatusAuthorized) {
+        return YES;
     }
+    
     return YES;
 }
 
 #pragma mark - SJScanningViewDelegate BarButtonItem Click Event
 
-- (void)clickBarButtonItemSJButtonType:(SJSCanningViewButton)btn {
-    if (btn == SJSCanningViewButtonExit) {
+- (void)scanningViewClickBarButtonItem:(SJSCanningViewButton)type {
+    if (type == SJSCanningViewButtonExit) {
         [self.cameraController stopSession];
         [self dismissViewControllerAnimated:YES completion:nil];
-    } else if (btn == SJSCanningViewButtonTorch) {
+    } else if (type == SJSCanningViewButtonTorch) {
         [self setTorchMode];
-    } else if (btn == SJSCanningViewButtonAlbum) {
+    } else if (type == SJSCanningViewButtonAlbum) {
         [self openImagePickerController];
     }
 }
@@ -169,7 +183,16 @@ typedef void(^successMessageBlock)(NSString *messageString);
 #pragma mark - Open imagePickController
 
 - (void)openImagePickerController {
-    [self presentViewController:self.pickerController animated:YES completion:nil];
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+        self.pickerController.sourceType = sourceType;
+        if(iOS8Later) {
+            self.pickerController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        }
+        [self presentViewController:self.pickerController animated:YES completion:nil];
+    } else {
+        NSLog(@"模拟器中无法打开照相机,请在真机中使用");
+    }
 }
 
 #pragma mark - SJCameraControllerDelegate
@@ -192,7 +215,6 @@ typedef void(^successMessageBlock)(NSString *messageString);
             [self dismissViewControllerAnimated:NO completion:nil];
             [self dismissViewControllerAnimated:YES completion:nil];
             self.block(resultString);
-          
         }
     }
 }
@@ -200,8 +222,10 @@ typedef void(^successMessageBlock)(NSString *messageString);
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (alertView.tag == 886) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+    if (buttonIndex == 1) { // 去设置界面，开启相机访问权限
+        if (iOS8Later) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }
     }
 }
 
