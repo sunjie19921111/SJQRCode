@@ -120,14 +120,6 @@ typedef void(^successMessageBlock)(NSString *messageString);
 #pragma mark - The Camera is Authorized
 
 - (BOOL)isCameraIsAuthorized {
-    /*AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if(authStatus == AVAuthorizationStatusDenied){
-        [self dismissViewControllerAnimated:YES completion:nil];
-        return NO;
-    } else if (authStatus == AVAuthorizationStatusAuthorized) {
-        return YES;
-    }*/
-    
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if ((authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied)) {
         // 无相机权限 做一个友好的提示
@@ -144,6 +136,26 @@ typedef void(^successMessageBlock)(NSString *messageString);
     
     return YES;
 }
+
+- (BOOL)isPhotoAlbumIsAuthorized {
+    ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
+    ALAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if ((authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied)) {
+        // 无相机权限 做一个友好的提示
+        if (iOS8Later) {
+            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
+            [alert show];
+        } else {
+            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+    }else if (authStatus == AVAuthorizationStatusAuthorized) {
+        return YES;
+    }
+    
+    return YES;
+}
+
 
 #pragma mark - SJScanningViewDelegate BarButtonItem Click Event
 
@@ -183,8 +195,8 @@ typedef void(^successMessageBlock)(NSString *messageString);
 #pragma mark - Open imagePickController
 
 - (void)openImagePickerController {
-    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
-    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypePhotoLibrary]) {
         self.pickerController.sourceType = sourceType;
         if(iOS8Later) {
             self.pickerController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
